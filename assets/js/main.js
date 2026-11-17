@@ -9,6 +9,11 @@
   const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  // rAF with a setTimeout fallback for exotic/embedded environments
+  const raf = typeof window.requestAnimationFrame === 'function'
+    ? window.requestAnimationFrame.bind(window)
+    : (cb) => window.setTimeout(() => cb(Date.now()), 16);
+  const noRaf = typeof window.requestAnimationFrame !== 'function';
 
   /* ---------------- Hero parallax (hoisted: used by scroll handler) ---------------- */
   function dropParallax(y) {
@@ -134,34 +139,35 @@
     const label = target.toFixed(decimals) + suffix;
     const dec = (v) => Math.max(0, v).toFixed(decimals);
 
-    // Static data for no-JS / no-motion / search engines: render the final value.
-    if (prefersReduced || typeof requestAnimationFrame !== 'function') {
-      el.textContent = label;
+    // Always leave the element on its true value, whatever happens.
+    const settle = () => { el.textContent = label; };
+
+    // Reduced motion / no rAF / hidden tab: show the final number immediately.
+    if (prefersReduced || noRaf || document.hidden) {
+      settle();
       return;
     }
 
-    // Write the final value immediately so the DOM is always truthful…
-    el.textContent = label;
-    // …then replay it visually. Screen readers and crawlers see the end state.
-    el.setAttribute('aria-label', label);
-
     const dur = 1500;
     const start = performance.now();
-    let frames = 0;
+    let done = false;
     const step = (now) => {
       const t = Math.min(1, Math.max(0, (now - start) / dur));
       const eased = 1 - Math.pow(1 - t, 3);
-      // Never let a tween show a negative or overshooting value
-      el.textContent = dec(target * eased) + suffix;
-      frames++;
-      if (t < 1 && frames < 400) requestAnimationFrame(step);
-      else el.textContent = label;
+      el.textContent = dec(target * eased) + suffix;   // clamped: never negative
+      if (t < 1) { raf(step); }
+      else { done = true; settle(); }
     };
-    // Start from zero only once we know we can animate
+
     el.textContent = dec(0) + suffix;
-    requestAnimationFrame(step);
-    // Hard guarantee: whatever happens above, settle on the real value.
-    setTimeout(() => { el.textContent = label; }, dur + 400);
+    raf(step);
+
+    // If the tab is hidden mid-tween, rAF pauses — jump straight to the value.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && !done) { done = true; settle(); }
+    });
+    // Absolute guarantee, even if rAF never fires again.
+    setTimeout(() => { if (!done) { done = true; settle(); } }, dur + 600);
   };
 
   const counters = $$('[data-count]');
@@ -319,9 +325,9 @@
       rx += (mx - rx) * 0.16;
       ry += (my - ry) * 0.16;
       ring.style.transform = `translate3d(${rx - 17}px, ${ry - 17}px, 0)`;
-      requestAnimationFrame(loop);
+      raf(loop);
     };
-    requestAnimationFrame(loop);
+    raf(loop);
 
     const hoverables = 'a, button, .project-card, .info-item, .chip, .tag, input, textarea, .skill-panel';
     document.addEventListener('pointerover', (ev) => {
@@ -405,7 +411,7 @@
     if (!ctx) return { rebuild() {} };
     let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
     let pts = [];
-    let raf = null;
+    let rafId = null;
     let mouse = { x: -9999, y: -9999 };
 
     const palette = () => {
@@ -474,7 +480,7 @@
         }
       }
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(draw);
+      rafId = raf(draw);
     };
 
     window.addEventListener('pointermove', (ev) => { mouse.x = ev.clientX; mouse.y = ev.clientY; }, { passive: true });
@@ -483,8 +489,11 @@
 
     // Pause when tab hidden
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
-      else if (!raf) draw();
+      if (document.hidden) {
+        if (rafId && typeof window.cancelAnimationFrame === 'function') window.cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      else if (!rafId) draw();
     });
 
     resize();

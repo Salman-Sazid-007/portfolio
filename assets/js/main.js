@@ -131,17 +131,37 @@
     const target = parseFloat(el.dataset.count || '0');
     const decimals = parseInt(el.dataset.decimals || '0', 10);
     const suffix = el.dataset.suffix || '';
+    const label = target.toFixed(decimals) + suffix;
+    const dec = (v) => Math.max(0, v).toFixed(decimals);
+
+    // Static data for no-JS / no-motion / search engines: render the final value.
+    if (prefersReduced || typeof requestAnimationFrame !== 'function') {
+      el.textContent = label;
+      return;
+    }
+
+    // Write the final value immediately so the DOM is always truthful…
+    el.textContent = label;
+    // …then replay it visually. Screen readers and crawlers see the end state.
+    el.setAttribute('aria-label', label);
+
     const dur = 1500;
     const start = performance.now();
+    let frames = 0;
     const step = (now) => {
-      const t = Math.min(1, (now - start) / dur);
+      const t = Math.min(1, Math.max(0, (now - start) / dur));
       const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = (target * eased).toFixed(decimals) + suffix;
-      if (t < 1) requestAnimationFrame(step);
-      else el.textContent = target.toFixed(decimals) + suffix;
+      // Never let a tween show a negative or overshooting value
+      el.textContent = dec(target * eased) + suffix;
+      frames++;
+      if (t < 1 && frames < 400) requestAnimationFrame(step);
+      else el.textContent = label;
     };
-    if (prefersReduced) { el.textContent = target.toFixed(decimals) + suffix; return; }
+    // Start from zero only once we know we can animate
+    el.textContent = dec(0) + suffix;
     requestAnimationFrame(step);
+    // Hard guarantee: whatever happens above, settle on the real value.
+    setTimeout(() => { el.textContent = label; }, dur + 400);
   };
 
   const counters = $$('[data-count]');

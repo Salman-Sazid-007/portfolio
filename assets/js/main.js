@@ -15,13 +15,6 @@
     : (cb) => window.setTimeout(() => cb(Date.now()), 16);
   const noRaf = typeof window.requestAnimationFrame !== 'function';
 
-  /* ---------------- Hero parallax (hoisted: used by scroll handler) ---------------- */
-  function dropParallax(y) {
-    const el = document.getElementById('heroTilt');
-    if (!el || prefersReduced || window.innerWidth < 981) return;
-    el.style.setProperty('--py', Math.min(y * 0.03, 30) + 'px');
-  }
-
   /* ---------------- Theme ---------------- */
   const root = document.documentElement;
   const themeBtn = $('#themeToggle');
@@ -34,7 +27,7 @@
   const themeColorMeta = $('meta[name="theme-color"]');
   const syncThemeColor = () => {
     if (themeColorMeta) {
-      themeColorMeta.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#f6f8fc' : '#070b14');
+      themeColorMeta.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#f6f4f0' : '#1b2030');
     }
   };
   syncThemeColor();
@@ -44,7 +37,6 @@
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('ss-theme', next); } catch (e) { /* ignore */ }
     syncThemeColor();
-    particles.rebuild();
   });
 
   /* ---------------- Preloader ---------------- */
@@ -72,7 +64,6 @@
       if (progress) progress.style.width = pct + '%';
       navWrap?.classList.toggle('scrolled', st > 24);
       toTop?.classList.toggle('show', st > 600);
-      dropParallax(st);
     } catch (e) { /* never let scroll handling break the page */ }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -186,10 +177,9 @@
   /* ---------------- Typewriter ---------------- */
   const typeEl = $('#typewriter');
   const phrases = [
-    'Mobile App Developer',
-    'React Native Specialist',
-    'JavaScript Developer',
-    'E-Commerce App Builder'
+    'React Native · JavaScript',
+    'Cross-platform · E-commerce',
+    'Based in Rajshahi · Remote'
   ];
   if (typeEl) {
     if (prefersReduced) {
@@ -251,7 +241,7 @@
     cards.forEach((c) => cardIO.observe(c));
   } else { cards.forEach((c) => c.classList.add('in')); }
 
-  const filterBtns = $$('.filter-btn');
+  const filterBtns = $$('.filter-btn');   // present only if filters are re-added
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       filterBtns.forEach((b) => b.classList.remove('active'));
@@ -263,16 +253,6 @@
       });
     });
   });
-
-  if (!isTouch) {
-    cards.forEach((card) => {
-      card.addEventListener('pointermove', (ev) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', ((ev.clientX - r.left) / r.width) * 100 + '%');
-        card.style.setProperty('--my', ((ev.clientY - r.top) / r.height) * 100 + '%');
-      });
-    });
-  }
 
   /* ---------------- 3D tilt ---------------- */
   const tiltEls = $$('.tilt');
@@ -309,33 +289,6 @@
         btn.style.transform = '';
         setTimeout(() => { btn.style.transition = ''; }, 500);
       });
-    });
-  }
-
-  /* ---------------- Custom cursor ---------------- */
-  const dot = $('#cursorDot');
-  const ring = $('#cursorRing');
-  if (dot && ring && !isTouch) {
-    let mx = -100, my = -100, rx = -100, ry = -100;
-    window.addEventListener('pointermove', (ev) => {
-      mx = ev.clientX; my = ev.clientY;
-      dot.style.transform = `translate3d(${mx - 3}px, ${my - 3}px, 0)`;
-    }, { passive: true });
-
-    const loop = () => {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      ring.style.transform = `translate3d(${rx - 17}px, ${ry - 17}px, 0)`;
-      raf(loop);
-    };
-    raf(loop);
-
-    const hoverables = 'a, button, .project-card, .info-item, .chip, .tag, input, textarea, .skill-panel';
-    document.addEventListener('pointerover', (ev) => {
-      if (ev.target.closest(hoverables)) ring.classList.add('hover');
-    });
-    document.addEventListener('pointerout', (ev) => {
-      if (ev.target.closest(hoverables)) ring.classList.remove('hover');
     });
   }
 
@@ -402,106 +355,6 @@
   /* ---------------- Footer year ---------------- */
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---------------- Particles canvas ---------------- */
-  const particles = (function () {
-    const canvas = $('#particles');
-    if (!canvas || prefersReduced) return { rebuild() {} };
-    let ctx = null;
-    try { ctx = canvas.getContext('2d'); } catch (e) { ctx = null; }
-    if (!ctx) return { rebuild() {} };
-    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let pts = [];
-    let rafId = null;
-    let mouse = { x: -9999, y: -9999 };
-
-    const palette = () => {
-      const light = root.getAttribute('data-theme') === 'light';
-      return light
-        ? ['rgba(13,148,136,.55)', 'rgba(91,108,255,.45)', 'rgba(219,39,119,.35)']
-        : ['rgba(94,234,212,.75)', 'rgba(124,140,255,.65)', 'rgba(255,122,198,.5)'];
-    };
-
-    const resize = () => {
-      w = canvas.clientWidth;
-      h = canvas.clientHeight;
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      build();
-    };
-
-    function build() {
-      const count = Math.min(88, Math.round((w * h) / 16000));
-      const colors = palette();
-      pts = Array.from({ length: count }, (_, i) => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 1.7 + 0.5,
-        vx: (Math.random() - 0.5) * 0.24,
-        vy: (Math.random() - 0.5) * 0.24,
-        c: colors[i % colors.length],
-        a: Math.random() * 0.5 + 0.3
-      }));
-    }
-
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i];
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < -10) p.x = w + 10; if (p.x > w + 10) p.x = -10;
-        if (p.y < -10) p.y = h + 10; if (p.y > h + 10) p.y = -10;
-
-        const dx = p.x - mouse.x, dy = p.y - mouse.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 120) {
-          p.x += (dx / dist) * 0.55;
-          p.y += (dy / dist) * 0.55;
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.c;
-        ctx.globalAlpha = p.a;
-        ctx.fill();
-
-        for (let j = i + 1; j < pts.length; j++) {
-          const q = pts[j];
-          const d = Math.hypot(p.x - q.x, p.y - q.y);
-          if (d < 118) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = p.c;
-            ctx.globalAlpha = (1 - d / 118) * 0.14;
-            ctx.lineWidth = 0.7;
-            ctx.stroke();
-          }
-        }
-      }
-      ctx.globalAlpha = 1;
-      rafId = raf(draw);
-    };
-
-    window.addEventListener('pointermove', (ev) => { mouse.x = ev.clientX; mouse.y = ev.clientY; }, { passive: true });
-    window.addEventListener('pointerleave', () => { mouse.x = -9999; mouse.y = -9999; });
-    window.addEventListener('resize', () => { clearTimeout(canvas._t); canvas._t = setTimeout(resize, 180); });
-
-    // Pause when tab hidden
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        if (rafId && typeof window.cancelAnimationFrame === 'function') window.cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-      else if (!rafId) draw();
-    });
-
-    resize();
-    draw();
-
-    return { rebuild: () => build() };
-  })();
 
   /* ---------------- Smooth anchor scroll w/ offset ---------------- */
   $$('a[href^="#"]').forEach((a) => {

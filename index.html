@@ -6,16 +6,18 @@
 <title>MD Salman Sazid — Mobile App Developer</title>
 <meta name="description" content="Portfolio of MD Salman Sazid — Mobile App Developer specialising in React Native, JavaScript and e-commerce apps. B.Sc. CSE, University of Rajshahi." />
 <meta name="author" content="MD Salman Sazid" />
-<meta name="theme-color" content="#070b14" />
+<meta name="theme-color" content="#1b2030" />
 <meta property="og:title" content="MD Salman Sazid — Mobile App Developer" />
 <meta property="og:description" content="React Native · JavaScript · E-commerce apps. 2+ years building cross-platform mobile experiences." />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="https://salman-sazid-007.github.io/portfolio/assets/img/portrait.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://salman-sazid-007.github.io/portfolio/" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230b1120'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-size='52' font-weight='bold' fill='%236ee7ff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='6' fill='%231b2030'/%3E%3Crect x='20' y='48' width='42' height='7' fill='%23f0a03c'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -24,53 +26,43 @@
   <style>
     .preloader { display: none !important; }
     [data-reveal] { opacity: 1 !important; transform: none !important; }
-    .mini-stat b, .stat-num { display: none; }
+    .stat-num { display: none; }
   </style>
 </noscript>
 
 <!-- ===== Preloader ===== -->
 <div class="preloader" id="preloader">
   <div class="preloader-inner">
-    <div class="preloader-mark">SS</div>
+    <div class="preloader-mark">Salman Sazid</div>
     <div class="preloader-bar"><span></span></div>
-    <p class="preloader-text">Loading experience…</p>
+    <p class="preloader-text">Loading</p>
   </div>
 </div>
 
-<!-- ===== Ambient background ===== -->
-<div class="bg-layer" aria-hidden="true">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="grid-lines"></div>
-  <canvas id="particles"></canvas>
-  <div class="grain"></div>
-</div>
-
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="bg-layer" aria-hidden="true"><div class="grid-lines"></div></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <!-- ===== Navigation ===== -->
 <header class="nav-wrap">
   <nav class="nav container" aria-label="Main navigation">
-    <a href="#home" class="brand" aria-label="Salman Sazid home">
-      <span class="brand-mark">S<span>.</span>S</span>
-      <span class="brand-text">Salman&nbsp;Sazid</span>
+    <!-- Wordmark only: the name appears exactly once, no monogram doubling -->
+    <a href="#home" class="brand" aria-label="Salman Sazid — home">
+      Salman Sazid
+      <span class="brand-dot" aria-hidden="true"></span>
     </a>
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#experience" class="nav-link">Experience</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#projects" class="nav-link">Work</a></li>
       <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
 
     <div class="nav-actions">
       <button class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme">
-        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
-        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"/></svg>
       </button>
       <a href="assets/files/Md-Salman-Sazid-CV.pdf" class="btn btn-ghost btn-cv" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17.5V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5"/></svg>
@@ -92,156 +84,122 @@
         <span class="pulse-dot"></span> Available for new opportunities
       </p>
 
-      <h1 class="hero-title" data-reveal data-delay="60">
-        <span class="line">Hi, I'm <span class="grad-text">Salman</span></span>
-        <span class="line">I build <span class="grad-text">mobile apps</span></span>
-        <span class="line">that feel <span class="underline-swipe">effortless</span>.</span>
+      <p class="hero-name" data-reveal data-delay="40">MD Salman Sazid</p>
+
+      <h1 class="hero-title" data-reveal data-delay="80">
+        <span>Mobile app</span>
+        <span class="muted">developer.</span>
       </h1>
 
-      <p class="hero-role" data-reveal data-delay="120">
-        <span class="mono">&lt;/&gt;</span>
+      <div class="title-rule" data-reveal data-delay="120"></div>
+
+      <p class="hero-role" data-reveal data-delay="160">
+        <span class="sep" aria-hidden="true"></span>
         <span id="typewriter" class="type-text" aria-live="polite"></span><span class="caret" aria-hidden="true"></span>
       </p>
 
-      <p class="hero-desc" data-reveal data-delay="180">
-        Computer Science graduate from the University of Rajshahi with <strong>2+ years</strong> of remote
-        experience at a USA-based software company — crafting cross-platform apps with
-        <strong>React Native</strong> and <strong>JavaScript</strong>, and turning e-commerce ideas into
-        smooth, reliable products.
+      <p class="hero-desc" data-reveal data-delay="200">
+        Computer Science graduate from the University of Rajshahi with <strong>2+ years</strong> of
+        remote experience at <strong>Fuego.io</strong>, USA — building cross-platform apps with
+        React Native and JavaScript, and turning e-commerce ideas into products that ship.
       </p>
 
       <div class="hero-cta" data-reveal data-delay="240">
         <a href="#projects" class="btn btn-primary magnetic">
-          View my work
+          See selected work
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14m-5.5-5.5L19 12l-5.5 5.5"/></svg>
         </a>
-        <a href="#contact" class="btn btn-outline magnetic">Let's talk</a>
+        <a href="#contact" class="btn btn-outline magnetic">Get in touch</a>
       </div>
 
-      <div class="hero-meta" data-reveal data-delay="300">
-        <button class="meta-chip copy-mail" data-mail="salmansazid70@gmail.com" title="Click to copy email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+      <div class="hero-meta" data-reveal data-delay="280">
+        <button class="meta-item copy-mail" data-mail="salmansazid70@gmail.com" title="Click to copy email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
           <span>salmansazid70@gmail.com</span>
         </button>
-        <span class="meta-chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <span class="meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
           <span>Rajshahi, Bangladesh</span>
         </span>
       </div>
 
-      <div class="socials" data-reveal data-delay="360">
+      <div class="socials" data-reveal data-delay="320">
         <a href="https://github.com/Salman-Sazid-007" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.09 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.28.74-1.57-2.56-.29-5.25-1.28-5.25-5.72 0-1.27.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.19a11 11 0 0 1 5.79 0c2.2-1.5 3.17-1.19 3.17-1.19.63 1.59.24 2.77.12 3.06.74.81 1.19 1.84 1.19 3.11 0 4.45-2.7 5.43-5.27 5.71.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12A11.5 11.5 0 0 0 12 .5Z"/></svg>
         </a>
         <a href="mailto:salmansazid70@gmail.com" aria-label="Email" class="social-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
         </a>
         <a href="tel:+8801727809737" aria-label="Phone" class="social-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6.5 3h2l1.6 4-2 1.3a12.5 12.5 0 0 0 5.6 5.6l1.3-2 4 1.6v2A2.5 2.5 0 0 1 16.4 18C10.1 17.5 4.5 11.9 4 5.6A2.5 2.5 0 0 1 6.5 3Z"/></svg>
         </a>
-        <a href="https://salman-sazid-007.github.io" target="_blank" rel="noopener" aria-label="Website" class="social-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.4 3.8 9S14.5 18.6 12 21c-2.5-2.4-3.8-5.4-3.8-9S9.5 5.4 12 3Z"/></svg>
-        </a>
       </div>
     </div>
 
-    <!-- Portrait / phone showcase -->
-    <div class="hero-visual" data-reveal data-delay="200">
-      <div class="tilt" id="heroTilt">
-        <div class="portrait-card">
-          <div class="portrait-glow"></div>
-          <div class="portrait-head">
-            <img src="assets/img/profile.svg" alt="MD Salman Sazid" class="avatar" width="96" height="96" />
-            <div>
-              <p class="portrait-name">MD Salman Sazid</p>
-              <p class="portrait-sub">Mobile App Developer</p>
-            </div>
-            <span class="live-badge">● Open</span>
-          </div>
-
-          <div class="code-window">
-            <div class="code-bar">
-              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-              <span class="code-title">App.tsx</span>
-            </div>
-            <pre class="code-body" aria-label="Code sample"><code><span class="c-key">const</span> <span class="c-var">developer</span> = {
-  name: <span class="c-str">"Salman Sazid"</span>,
-  role: <span class="c-str">"React Native Dev"</span>,
-  stack: [<span class="c-str">"JS"</span>, <span class="c-str">"React Native"</span>],
-  experience: <span class="c-num">"2+ years"</span>,
-  ships: <span class="c-key">true</span>,
-};<span class="c-cursor">▍</span></code></pre>
-          </div>
-
-          <div class="portrait-stats">
-            <div class="mini-stat"><b data-count="2" data-suffix="+">0</b><span>Years exp.</span></div>
-            <div class="mini-stat"><b data-count="100" data-suffix="%">0</b><span>Remote ready</span></div>
-            <div class="mini-stat"><b data-count="1" data-suffix="">0</b><span>Thesis</span></div>
-          </div>
+    <!-- Portrait: the identity, replacing the old SS monogram -->
+    <div class="hero-visual" data-reveal data-delay="180">
+      <div class="portrait-frame">
+        <picture>
+          <source srcset="assets/img/portrait.webp" type="image/webp" />
+          <img src="assets/img/portrait.jpg" alt="MD Salman Sazid" class="portrait-img"
+               width="1100" height="1375" fetchpriority="high" decoding="async" />
+        </picture>
+        <div class="portrait-tag">
+          <b>Rajshahi, Bangladesh</b>
+          <span>Remote ready</span>
         </div>
-
-        <div class="float-chip chip-react">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="10" ry="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"/></svg>
-          React Native
-        </div>
-        <div class="float-chip chip-js">
-          <span class="js-badge">JS</span> JavaScript
-        </div>
-        <div class="float-chip chip-ai">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 17 9 9l3.5 4.5L15 10l5 7"/><path d="M3 21h18"/></svg>
-          Forecasting
-        </div>
+      </div>
+      <div class="float-card">
+        <b data-count="2" data-suffix="+">0</b>
+        <small>Years<br />experience</small>
       </div>
     </div>
   </div>
 
   <a href="#about" class="scroll-cue" aria-label="Scroll to about">
-    <span class="mouse"><span class="wheel"></span></span>
-    <span class="scroll-cue-text">scroll</span>
+    <span class="line" aria-hidden="true"></span>
+    <span>Scroll</span>
   </a>
 </section>
 
-<!-- ===== Marquee ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>React Native</span><i>✦</i><span>JavaScript</span><i>✦</i><span>E-Commerce Apps</span><i>✦</i><span>UI / UX</span><i>✦</i><span>Python</span><i>✦</i><span>API Integration</span><i>✦</i><span>Cross-Platform</span><i>✦</i>
-    <span>React Native</span><i>✦</i><span>JavaScript</span><i>✦</i><span>E-Commerce Apps</span><i>✦</i><span>UI / UX</span><i>✦</i><span>Python</span><i>✦</i><span>API Integration</span><i>✦</i><span>Cross-Platform</span><i>✦</i>
-  </div>
+<!-- ===== Tools strip ===== -->
+<div class="tools-strip">
+  <ul class="tools-inner container">
+    <li>React Native</li>
+    <li>JavaScript</li>
+    <li>E-Commerce</li>
+    <li>REST APIs</li>
+    <li>Python</li>
+  </ul>
 </div>
 
 <!-- ===== About ===== -->
 <section class="section" id="about">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow" data-reveal><span>01</span> About me</p>
-      <h2 class="section-title" data-reveal>Curious engineer, <span class="grad-text">product thinker</span>.</h2>
+      <p class="eyebrow" data-reveal><b>01</b> About</p>
+      <h2 class="section-title" data-reveal>Engineering with an <em>eye for detail</em>.</h2>
     </div>
 
     <div class="about-grid">
       <div class="about-text" data-reveal>
         <p>
-          I'm a Computer Science &amp; Engineering graduate from the
-          <strong>University of Rajshahi</strong>, currently working remotely as a
-          <strong>Mobile App Developer at Fuego.io</strong>, USA. For the past two years I've been
-          shipping cross-platform applications used by real customers — from the first wireframe
-          to the store release.
+          I'm a Computer Science &amp; Engineering graduate from the <strong>University of Rajshahi</strong>,
+          currently working remotely as a Mobile App Developer at <strong>Fuego.io</strong>, USA.
         </p>
         <p>
-          My sweet spot is <strong>e-commerce</strong>: product listings, carts, checkout flows and
-          order management that stay fast and predictable under real-world conditions. I care about
-          the small details — loading states, empty states, and interfaces that never make a user stop
-          and think.
+          Over the past two years I've shipped cross-platform applications used by real customers — from
+          the first wireframe to the store release. My focus is e-commerce: product listings, carts,
+          checkout flows and order management that stay fast and predictable under real-world conditions.
         </p>
         <p>
-          Outside of work I research climate modelling, where I combined <strong>Prophet</strong> and
-          <strong>XGBoost</strong> on NASA POWER data to forecast long-term temperature trends for my
-          undergraduate thesis. I'm currently looking for a software engineering role where I can keep
-          building user-friendly products and grow with the team.
+          I care about the small details — loading states, empty states, and interfaces that never make a
+          user stop and think. Outside of work I research climate modelling, combining
+          <strong>Prophet</strong> and <strong>XGBoost</strong> on NASA POWER data to forecast long-term
+          temperature trends.
         </p>
 
         <div class="info-grid">
-          <div class="info-item"><span>Name</span><b>MD Salman Sazid</b></div>
-          <div class="info-item"><span>Role</span><b>Mobile App Developer</b></div>
           <div class="info-item"><span>Location</span><b>Rajshahi, Bangladesh</b></div>
           <div class="info-item"><span>Languages</span><b>Bangla · English</b></div>
           <div class="info-item"><span>Email</span><b><a href="mailto:salmansazid70@gmail.com">salmansazid70@gmail.com</a></b></div>
@@ -249,32 +207,20 @@
         </div>
       </div>
 
-      <div class="about-cards" data-reveal data-delay="120">
+      <div class="stats-row" data-reveal data-delay="100">
         <article class="stat-card">
-          <div class="stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg>
-          </div>
           <b class="stat-num" data-count="2" data-suffix="+">0</b>
-          <span>Years of remote experience</span>
+          <span>Years remote experience</span>
         </article>
         <article class="stat-card">
-          <div class="stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></svg>
-          </div>
-          <b class="stat-num" data-count="3.21" data-decimals="2" data-suffix="">0</b>
+          <b class="stat-num" data-count="3.21" data-decimals="2">0</b>
           <span>CGPA — B.Sc. CSE</span>
         </article>
         <article class="stat-card">
-          <div class="stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 17 9 9l3.5 4.5L15 10l5 7"/><path d="M3 21h18"/></svg>
-          </div>
-          <b class="stat-num" data-count="1" data-suffix="">0</b>
-          <span>Published research thesis</span>
+          <b class="stat-num" data-count="1">0</b>
+          <span>Research thesis</span>
         </article>
         <article class="stat-card">
-          <div class="stat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-          </div>
           <b class="stat-num" data-count="5" data-suffix=".00">0</b>
           <span>HSC &amp; SSC GPA</span>
         </article>
@@ -287,23 +233,19 @@
 <section class="section" id="experience">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow" data-reveal><span>02</span> Experience</p>
-      <h2 class="section-title" data-reveal>Where I've <span class="grad-text">shipped</span>.</h2>
+      <p class="eyebrow" data-reveal><b>02</b> Experience</p>
+      <h2 class="section-title" data-reveal>Where I've <em>shipped</em>.</h2>
     </div>
 
     <div class="timeline">
-      <div class="timeline-line" aria-hidden="true"></div>
-
       <article class="timeline-item" data-reveal>
-        <div class="timeline-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div>
-              <h3>Mobile App Developer <span class="badge-remote">Remote</span></h3>
-              <p class="company">Fuego.io <span>· USA</span></p>
-            </div>
-            <p class="period">Nov 2024 — Present</p>
-          </div>
+        <div class="tl-period">
+          Nov 2024 — Present
+          <em>2+ years · Remote</em>
+        </div>
+        <div class="tl-main">
+          <h3>Mobile App Developer <span class="badge-remote">Remote</span></h3>
+          <p class="company">Fuego.io <span>· USA</span></p>
           <ul class="bullets">
             <li>Developed and maintained cross-platform mobile applications using <strong>React Native</strong> and <strong>JavaScript</strong>.</li>
             <li>Built e-commerce features such as <strong>product listing, cart, checkout</strong> and <strong>order management</strong>.</li>
@@ -315,18 +257,16 @@
         </div>
       </article>
 
-      <article class="timeline-item" data-reveal data-delay="100">
-        <div class="timeline-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div>
-              <h3>B.Sc. in Computer Science &amp; Engineering</h3>
-              <p class="company">University of Rajshahi <span>· Bangladesh</span></p>
-            </div>
-            <p class="period">2022 — 2026</p>
-          </div>
+      <article class="timeline-item" data-reveal data-delay="80">
+        <div class="tl-period">
+          2022 — 2026
+          <em>CGPA 3.21 / 4.00</em>
+        </div>
+        <div class="tl-main">
+          <h3>B.Sc. in Computer Science &amp; Engineering</h3>
+          <p class="company">University of Rajshahi <span>· Bangladesh</span></p>
           <ul class="bullets">
-            <li>CGPA <strong>3.21 / 4.00</strong> — coursework in algorithms, data structures, databases and software engineering.</li>
+            <li>Coursework in algorithms, data structures, databases and software engineering.</li>
             <li>Undergraduate thesis: <strong>Long-Term Temperature Forecasting</strong> using a Prophet + XGBoost hybrid model.</li>
           </ul>
           <div class="tag-row">
@@ -335,16 +275,14 @@
         </div>
       </article>
 
-      <article class="timeline-item" data-reveal data-delay="200">
-        <div class="timeline-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <div>
-              <h3>Higher Secondary &amp; Secondary Certificate</h3>
-              <p class="company">Rajshahi University School <span>· Bangladesh</span></p>
-            </div>
-            <p class="period">2018 — 2020</p>
-          </div>
+      <article class="timeline-item" data-reveal data-delay="160">
+        <div class="tl-period">
+          2018 — 2020
+          <em>GPA 5.00 / 5.00</em>
+        </div>
+        <div class="tl-main">
+          <h3>Higher Secondary &amp; Secondary Certificate</h3>
+          <p class="company">Rajshahi University School <span>· Bangladesh</span></p>
           <ul class="bullets">
             <li>HSC (2020) — GPA <strong>5.00 / 5.00</strong>.</li>
             <li>SSC (2018) — GPA <strong>5.00 / 5.00</strong>.</li>
@@ -355,36 +293,25 @@
   </div>
 </section>
 
-<!-- ===== Projects ===== -->
+<!-- ===== Work ===== -->
 <section class="section" id="projects">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow" data-reveal><span>03</span> Selected work</p>
-      <h2 class="section-title" data-reveal>Things I've <span class="grad-text">built</span>.</h2>
-      <p class="section-sub" data-reveal>A mix of production work, research and side projects.</p>
-    </div>
-
-    <div class="filter-row" data-reveal>
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="mobile">Mobile</button>
-      <button class="filter-btn" data-filter="research">Research</button>
-      <button class="filter-btn" data-filter="web">Web</button>
+      <p class="eyebrow" data-reveal><b>03</b> Selected work</p>
+      <h2 class="section-title" data-reveal>All creative work, <em>selected projects</em>.</h2>
     </div>
 
     <div class="project-grid">
-      <article class="project-card tilt" data-cat="mobile" data-reveal>
-        <div class="project-visual pv-shop">
+      <article class="project-card" data-cat="mobile" data-reveal>
+        <div class="project-visual">
           <div class="phone">
             <div class="phone-notch"></div>
             <div class="phone-screen">
               <span class="ph-bar"></span>
-              <div class="ph-grid">
-                <span></span><span></span><span></span><span></span>
-              </div>
+              <div class="ph-grid"><span></span><span></span><span></span><span></span></div>
               <span class="ph-btn"></span>
             </div>
           </div>
-          <span class="glow-ring"></span>
         </div>
         <div class="project-body">
           <div class="project-top">
@@ -399,21 +326,20 @@
         </div>
       </article>
 
-      <article class="project-card tilt" data-cat="research" data-reveal data-delay="100">
-        <div class="project-visual pv-chart">
+      <article class="project-card" data-cat="research" data-reveal data-delay="80">
+        <div class="project-visual">
+          <span class="chart-label">+2.4°C trend</span>
           <svg viewBox="0 0 300 160" class="chart-svg" aria-hidden="true">
             <defs>
               <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="var(--accent-a)" stop-opacity=".45"/>
-                <stop offset="100%" stop-color="var(--accent-a)" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#f0a03c" stop-opacity=".28"/>
+                <stop offset="100%" stop-color="#f0a03c" stop-opacity="0"/>
               </linearGradient>
             </defs>
             <path class="chart-area" d="M0 120 C30 110 45 96 70 100 S115 78 140 70 S185 84 210 58 S260 34 300 22 L300 160 L0 160 Z" fill="url(#chartFill)"/>
-            <path class="chart-line" d="M0 120 C30 110 45 96 70 100 S115 78 140 70 S185 84 210 58 S260 34 300 22" fill="none" stroke="var(--accent-a)" stroke-width="2.5" stroke-linecap="round"/>
-            <circle class="chart-dot" cx="210" cy="58" r="5" fill="var(--accent-a)"/>
+            <path class="chart-line" d="M0 120 C30 110 45 96 70 100 S115 78 140 70 S185 84 210 58 S260 34 300 22" fill="none" stroke-width="2" stroke-linecap="round"/>
+            <circle class="chart-dot" cx="210" cy="58" r="4" fill="#f0a03c"/>
           </svg>
-          <span class="chart-label">+2.4°C trend</span>
-          <span class="glow-ring"></span>
         </div>
         <div class="project-body">
           <div class="project-top">
@@ -428,8 +354,8 @@
         </div>
       </article>
 
-      <article class="project-card tilt" data-cat="web" data-reveal data-delay="200">
-        <div class="project-visual pv-site">
+      <article class="project-card" data-cat="web" data-reveal data-delay="160">
+        <div class="project-visual">
           <div class="browser">
             <div class="browser-bar"><span></span><span></span><span></span></div>
             <div class="browser-body">
@@ -438,7 +364,6 @@
               <div class="bl b3"></div>
             </div>
           </div>
-          <span class="glow-ring"></span>
         </div>
         <div class="project-body">
           <div class="project-top">
@@ -446,7 +371,7 @@
             <span class="project-arrow">↗</span>
           </div>
           <h3>This Portfolio</h3>
-          <p>A hand-coded, fully responsive portfolio with scroll reveals, canvas particles, tilt cards and light/dark theming — no frameworks, no build step.</p>
+          <p>A hand-coded, fully responsive portfolio with scroll reveals, a dual-tone design system and light/dark theming — no frameworks, no build step.</p>
           <div class="tag-row">
             <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
           </div>
@@ -460,8 +385,8 @@
 <section class="section" id="skills">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow" data-reveal><span>04</span> Toolkit</p>
-      <h2 class="section-title" data-reveal>What I work <span class="grad-text">with</span>.</h2>
+      <p class="eyebrow" data-reveal><b>04</b> Capabilities</p>
+      <h2 class="section-title" data-reveal>What I <em>work with</em>.</h2>
     </div>
 
     <div class="skills-grid">
@@ -477,42 +402,42 @@
             <div class="sb-top"><span>JavaScript</span><em>Strong</em></div>
             <div class="sb-track"><span class="sb-fill"></span></div>
           </div>
-          <div class="skill-bar" data-level="62">
-            <div class="sb-top"><span>Python</span><em>Moderate</em></div>
-            <div class="sb-track"><span class="sb-fill"></span></div>
-          </div>
           <div class="skill-bar" data-level="72">
             <div class="sb-top"><span>HTML / CSS</span><em>Comfortable</em></div>
+            <div class="sb-track"><span class="sb-fill"></span></div>
+          </div>
+          <div class="skill-bar" data-level="62">
+            <div class="sb-top"><span>Python</span><em>Moderate</em></div>
             <div class="sb-track"><span class="sb-fill"></span></div>
           </div>
         </div>
       </div>
 
-      <div class="skill-panel" data-reveal data-delay="100">
+      <div class="skill-panel" data-reveal data-delay="80">
         <div class="panel-head">
           <span class="panel-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M11 18.6h2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M11 18.6h2"/></svg>
           </span>
           <h3>Mobile Development</h3>
         </div>
         <div class="chip-set">
           <span class="chip">React Native</span>
-          <span class="chip">Cross-platform apps</span>
+          <span class="chip">Cross-platform</span>
           <span class="chip">E-commerce apps</span>
           <span class="chip">Navigation</span>
           <span class="chip">State management</span>
           <span class="chip">REST APIs</span>
         </div>
         <div class="panel-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="m5 13 4 4L19 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m5 13 4 4L19 7"/></svg>
           Shipping production apps for a USA-based company since 2024.
         </div>
       </div>
 
-      <div class="skill-panel" data-reveal data-delay="200">
+      <div class="skill-panel" data-reveal data-delay="160">
         <div class="panel-head">
           <span class="panel-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 18V9M10 18V4M16 18v-6M22 18v-9"/></svg>
           </span>
           <h3>Data &amp; Tools</h3>
         </div>
@@ -526,7 +451,7 @@
         </div>
       </div>
 
-      <div class="skill-panel" data-reveal data-delay="300">
+      <div class="skill-panel" data-reveal data-delay="240">
         <div class="panel-head">
           <span class="panel-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3Z"/></svg>
@@ -534,10 +459,10 @@
           <h3>Languages</h3>
         </div>
         <div class="lang-row"><span>Bangla</span><span class="lang-level">Native</span></div>
-        <div class="lang-row"><span>English</span><span class="lang-level">Professional — daily with USA team</span></div>
+        <div class="lang-row"><span>English</span><span class="lang-level">Professional</span></div>
         <div class="panel-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          Based in Rajshahi, Bangladesh · Remote friendly
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Daily communication with a USA-based team.
         </div>
       </div>
     </div>
@@ -548,20 +473,19 @@
 <section class="section" id="contact">
   <div class="container">
     <div class="contact-wrap" data-reveal>
-      <div class="contact-glow" aria-hidden="true"></div>
       <div class="contact-grid">
         <div class="contact-copy">
-          <p class="eyebrow"><span>05</span> Contact</p>
-          <h2 class="contact-title">Let's build something <span class="grad-text">worth using</span>.</h2>
+          <p class="eyebrow"><b>05</b> Contact</p>
+          <h2 class="contact-title">Let's build something <em>worth using</em>.</h2>
           <p class="contact-sub">
-            I'm open to full-time software / mobile development roles and freelance projects.
-            Drop a message — I usually reply within a day.
+            Open to full-time software and mobile development roles, plus freelance projects.
+            I usually reply within a day.
           </p>
 
           <div class="contact-cards">
             <button class="contact-card copy-mail" data-mail="salmansazid70@gmail.com">
               <span class="cc-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
               </span>
               <span class="cc-text"><em>Email</em><b>salmansazid70@gmail.com</b></span>
               <span class="cc-action">Copy</span>
@@ -610,11 +534,8 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <a href="#home" class="brand">
-      <span class="brand-mark">S<span>.</span>S</span>
-      <span class="brand-text">Salman&nbsp;Sazid</span>
-    </a>
-    <p class="footer-note">© <span id="year">2026</span> MD Salman Sazid · Hand-coded with care in Rajshahi.</p>
+    <a href="#home" class="brand">Salman Sazid <span class="brand-dot" aria-hidden="true"></span></a>
+    <p class="footer-note">© <span id="year">2026</span> MD Salman Sazid · Rajshahi, Bangladesh</p>
     <div class="footer-links">
       <a href="https://github.com/Salman-Sazid-007" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:salmansazid70@gmail.com">Email</a>

@@ -159,7 +159,8 @@
       else { done = true; settle(); }
     };
 
-    el.textContent = dec(0) + suffix;
+    // Do NOT blank the element first: the HTML already holds the true value,
+    // so crawlers, snapshot tools and slow first paints always read correctly.
     raf(step);
 
     // If the tab is hidden mid-tween, rAF pauses — jump straight to the value.
